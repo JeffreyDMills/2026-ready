@@ -408,6 +408,81 @@ h4 {
 .cap-evidence ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--charcoal); }
 .cap-evidence li { margin: 2px 0; }
 
+/* ========== ROLE PICKER (Standard tab) ========== */
+.role-picker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 12px 0 22px;
+}
+.role-picker label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.role-picker select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 9px 36px 9px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23204ECF' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px;
+  outline: none;
+  min-width: 280px;
+}
+.role-picker select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(32,78,207,0.12);
+}
+.role-picker .btn { margin-left: auto; }
+
+/* Role-applicability badge on cap cards */
+.cap-applicability {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+}
+.cap-app-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.cap-app-label[data-level="required"] {
+  background: var(--blue);
+  color: #fff;
+}
+.cap-app-label[data-level="recommended"] {
+  background: var(--accent-bg);
+  color: var(--blue);
+}
+.cap-app-label[data-level="optional"] {
+  background: var(--bg-tile);
+  color: var(--muted);
+}
+/* When a role is picked, dim the giant 01..07 number so the badge is the focal point */
+.cap-grid.has-role .cap-num { opacity: 0.35; }
+.cap-grid.has-role .cap-card[data-applies="optional"] { opacity: 0.55; }
+.cap-grid.has-role .cap-card[data-applies="optional"]:hover { opacity: 1; }
+
 /* ========== TIER CARDS ========== */
 .tier-grid {
   display: grid;
@@ -443,7 +518,116 @@ h4 {
   margin-bottom: 8px;
 }
 .tier-card h3 { color: #fff; margin: 0 0 12px; font-size: 24px; }
-.tier-card p { margin: 0; color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.5; }
+.tier-card p { margin: 0 0 10px; color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.5; }
+.tier-card p.tier-who {
+  font-weight: 600;
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+}
+
+/* ========== FOR TALENT TAB ========== */
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+  margin: 18px 0 8px;
+}
+.benefit-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.benefit-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+.benefit-icon {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--blue);
+  background: var(--accent-bg);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  font-feature-settings: "tnum" 1;
+}
+.benefit-card h3 { margin: 0 0 8px; font-size: 18px; color: var(--navy); }
+.benefit-card p { margin: 0; color: var(--charcoal); font-size: 15px; line-height: 1.55; }
+
+/* ========== EQUIVALENTS FORM (Curriculum tab) ========== */
+.equivalents-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px 26px;
+  margin-top: 16px;
+}
+.equivalents-form { display: grid; gap: 14px; }
+.form-row { display: grid; gap: 6px; }
+.form-row label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+.form-row input,
+.form-row textarea {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--charcoal);
+  outline: none;
+  resize: vertical;
+}
+.form-row input:focus,
+.form-row textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(32,78,207,0.12);
+}
+.form-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.equivalents-output {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.equivalents-output pre {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.eq-output-label {
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 14px;
+}
+.eq-note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
 
 /* ========== CURRICULUM ========== */
 .curriculum-controls {
@@ -1049,7 +1233,7 @@ tbody tr:nth-child(even) td { background: var(--bg-soft); }
 </header>
 
 <nav class="tab-nav" aria-label="Section navigation">
-  <div class="tab-nav-inner"><button class="tab-btn active" data-target="overview" type="button"><span class="tab-num">01</span>Overview</button><button class="tab-btn" data-target="standard" type="button"><span class="tab-num">02</span>The Standard</button><button class="tab-btn" data-target="curriculum" type="button"><span class="tab-num">03</span>Curriculum</button><button class="tab-btn" data-target="rollout" type="button"><span class="tab-num">04</span>Rollout</button><button class="tab-btn" data-target="questions" type="button"><span class="tab-num">05</span>Question Bank</button><button class="tab-btn" data-target="buyer" type="button"><span class="tab-num">06</span>Buyer Lens</button><button class="tab-btn" data-target="guidelines" type="button"><span class="tab-num">07</span>Client Guidelines</button><button class="tab-btn" data-target="governance" type="button"><span class="tab-num">08</span>Governance</button></div>
+  <div class="tab-nav-inner"><button class="tab-btn active" data-target="overview" type="button"><span class="tab-num">01</span>Overview</button><button class="tab-btn" data-target="standard" type="button"><span class="tab-num">02</span>The Standard</button><button class="tab-btn" data-target="curriculum" type="button"><span class="tab-num">03</span>Curriculum</button><button class="tab-btn" data-target="rollout" type="button"><span class="tab-num">04</span>Rollout</button><button class="tab-btn" data-target="questions" type="button"><span class="tab-num">05</span>Question Bank</button><button class="tab-btn" data-target="talent" type="button"><span class="tab-num">06</span>For Talent</button><button class="tab-btn" data-target="buyer" type="button"><span class="tab-num">07</span>Buyer Lens</button><button class="tab-btn" data-target="guidelines" type="button"><span class="tab-num">08</span>Client Guidelines</button><button class="tab-btn" data-target="governance" type="button"><span class="tab-num">09</span>Governance</button></div>
 </nav>
 
 <main>
@@ -1100,7 +1284,7 @@ tbody tr:nth-child(even) td { background: var(--bg-soft); }
     <p>2026 Ready is not prompt engineering. It is the new professional standard for senior enterprise work.</p>
   </div>
 
-  <h2>Seven things every Toptal professional must be able to say</h2>
+  <h2>Seven things every Toptal professional should be able to say</h2>
   <ol class="standard-list">
     <li>I know which AI tools to use for my role and why.</li>
     <li>I can use AI without exposing client data.</li>
@@ -1112,11 +1296,22 @@ tbody tr:nth-child(even) td { background: var(--bg-soft); }
   </ol>
 
   <h2>The seven capability areas</h2>
-  <div class="cap-grid"><article class="cap-card"><div class="cap-num">01</div><h3>AI Fluency</h3><p>Understands LLMs, reasoning models, multimodal systems, copilots, agents, context windows, RAG, and evaluation. Can explain trade-offs to a non-technical client.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Anthropic AI Fluency</li><li>Google AI Essentials</li><li>Brief a client team on AI fundamentals</li></ul></div></article><article class="cap-card"><div class="cap-num">02</div><h3>Tool Fluency</h3><p>Operates the core enterprise AI stack. Picks the right tool based on task, data sensitivity, and required output. Not the most popular tool. The right one.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>OpenAI / Anthropic / Microsoft / GitHub Copilot module completions</li><li>Personal toolchain brief reviewed by Toptal expert</li></ul></div></article><article class="cap-card"><div class="cap-num">03</div><h3>Workflow Redesign</h3><p>Identifies where AI improves a task, where it creates risk, and where human judgment stays. Takes a client workflow and redesigns it without breaking accountability.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Submitted before-and-after workflow artifact</li><li>Client deliverable documenting the change</li></ul></div></article><article class="cap-card"><div class="cap-num">04</div><h3>Enterprise Readiness</h3><p>Privacy, security, IP, data classification, auditability, compliance, permissions, client AI policy. The difference between hobbyist and professional in regulated environments.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Microsoft AI-900 or AWS AI Practitioner</li><li>Toptal Enterprise AI Policy assessment</li></ul></div></article><article class="cap-card"><div class="cap-num">05</div><h3>Output Validation</h3><p>Reviews, tests, benchmarks, and explains AI-assisted work. Treats AI output as a draft, not a deliverable. Catches hallucinations before the client does.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Anthropic Prompt Evaluations module</li><li>Documented evaluation rubric on a recent deliverable</li></ul></div></article><article class="cap-card"><div class="cap-num">06</div><h3>Agentic Work</h3><p>Knows how agents operate: goals, tools, memory, retrieval, approvals, human-in-the-loop, escalation, monitoring. Not confused with chatbots.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Anthropic MCP courses or Hugging Face Agents course</li><li>Submitted agent design or critique</li></ul></div></article><article class="cap-card"><div class="cap-num">07</div><h3>Business Outcome Thinking</h3><p>Ties AI-enabled work to measurable client outcomes: speed, cost, quality, accuracy, throughput, conversion, risk reduction. The capability that earns the next conversation, not just the next ticket.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Outcome retrospective on a recent engagement</li><li>Pre-engagement KPI brief co-signed by the client lead</li></ul></div></article></div>
+  <p class="lede">Not every capability matters equally for every role. Pick yours and the cards below show what is required, recommended, or optional for that role.</p>
+
+  <div class="role-picker">
+    <label for="role-select">Show me what is required for my role:</label>
+    <select id="role-select">
+      <option value="">All capabilities (default view)</option>
+      <option value="core">Core Team (internal Toptal)</option><option value="ts-delivery">TS Delivery</option><option value="matcher">Matcher</option><option value="engineer">Software Engineer</option><option value="ai-ml">AI / ML Engineer</option><option value="data-eng">Data Engineer</option><option value="pm">Product Manager</option><option value="designer">Designer</option><option value="consultant">Consultant / Strategist</option><option value="delivery-lead">Senior Delivery Lead</option>
+    </select>
+    <button type="button" id="role-reset" class="btn btn-ghost" hidden>Reset</button>
+  </div>
+
+  <div class="cap-grid" id="cap-grid"><article class="cap-card" data-role-core="required" data-role-ts-delivery="required" data-role-matcher="required" data-role-engineer="required" data-role-ai-ml="required" data-role-data-eng="required" data-role-pm="required" data-role-designer="required" data-role-consultant="required" data-role-delivery-lead="required"><div class="cap-num">01</div><div class="cap-applicability"><span class="cap-app-label" hidden></span></div><h3>AI Fluency</h3><p>Understands LLMs, reasoning models, multimodal systems, copilots, agents, context windows, RAG, and evaluation. Can explain trade-offs to a non-technical client.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Anthropic AI Fluency</li><li>Google AI Essentials</li><li>Brief a client team on AI fundamentals</li></ul></div></article><article class="cap-card" data-role-core="required" data-role-ts-delivery="required" data-role-matcher="required" data-role-engineer="required" data-role-ai-ml="required" data-role-data-eng="required" data-role-pm="required" data-role-designer="required" data-role-consultant="required" data-role-delivery-lead="required"><div class="cap-num">02</div><div class="cap-applicability"><span class="cap-app-label" hidden></span></div><h3>Tool Fluency</h3><p>Operates the core enterprise AI stack. Picks the right tool based on task, data sensitivity, and required output. Not the most popular tool. The right one.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>OpenAI / Anthropic / Microsoft / GitHub Copilot module completions</li><li>Personal toolchain brief reviewed by Toptal expert</li></ul></div></article><article class="cap-card" data-role-core="recommended" data-role-ts-delivery="required" data-role-matcher="recommended" data-role-engineer="required" data-role-ai-ml="required" data-role-data-eng="required" data-role-pm="recommended" data-role-designer="optional" data-role-consultant="required" data-role-delivery-lead="required"><div class="cap-num">03</div><div class="cap-applicability"><span class="cap-app-label" hidden></span></div><h3>Workflow Redesign</h3><p>Identifies where AI improves a task, where it creates risk, and where human judgment stays. Takes a client workflow and redesigns it without breaking accountability.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Submitted before-and-after workflow artifact</li><li>Client deliverable documenting the change</li></ul></div></article><article class="cap-card" data-role-core="required" data-role-ts-delivery="required" data-role-matcher="required" data-role-engineer="required" data-role-ai-ml="required" data-role-data-eng="required" data-role-pm="required" data-role-designer="required" data-role-consultant="required" data-role-delivery-lead="required"><div class="cap-num">04</div><div class="cap-applicability"><span class="cap-app-label" hidden></span></div><h3>Enterprise Readiness</h3><p>Privacy, security, IP, data classification, auditability, compliance, permissions, client AI policy. The difference between hobbyist and professional in regulated environments.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Microsoft AI-900 or AWS AI Practitioner</li><li>Toptal Enterprise AI Policy assessment</li></ul></div></article><article class="cap-card" data-role-core="required" data-role-ts-delivery="required" data-role-matcher="required" data-role-engineer="required" data-role-ai-ml="required" data-role-data-eng="required" data-role-pm="required" data-role-designer="recommended" data-role-consultant="required" data-role-delivery-lead="required"><div class="cap-num">05</div><div class="cap-applicability"><span class="cap-app-label" hidden></span></div><h3>Output Validation</h3><p>Reviews, tests, benchmarks, and explains AI-assisted work. Treats AI output as a draft, not a deliverable. Catches hallucinations before the client does.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Anthropic Prompt Evaluations module</li><li>Documented evaluation rubric on a recent deliverable</li></ul></div></article><article class="cap-card" data-role-core="recommended" data-role-ts-delivery="recommended" data-role-matcher="optional" data-role-engineer="required" data-role-ai-ml="required" data-role-data-eng="required" data-role-pm="recommended" data-role-designer="optional" data-role-consultant="recommended" data-role-delivery-lead="required"><div class="cap-num">06</div><div class="cap-applicability"><span class="cap-app-label" hidden></span></div><h3>Agentic Work</h3><p>Knows how agents operate: goals, tools, memory, retrieval, approvals, human-in-the-loop, escalation, monitoring. Not confused with chatbots.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Anthropic MCP courses or Hugging Face Agents course</li><li>Submitted agent design or critique</li></ul></div></article><article class="cap-card" data-role-core="recommended" data-role-ts-delivery="required" data-role-matcher="recommended" data-role-engineer="recommended" data-role-ai-ml="recommended" data-role-data-eng="recommended" data-role-pm="required" data-role-designer="optional" data-role-consultant="required" data-role-delivery-lead="required"><div class="cap-num">07</div><div class="cap-applicability"><span class="cap-app-label" hidden></span></div><h3>Business Outcome Thinking</h3><p>Ties AI-enabled work to measurable client outcomes: speed, cost, quality, accuracy, throughput, conversion, risk reduction. The capability that earns the next conversation, not just the next ticket.</p><div class="cap-evidence"><span class="cap-label">Evidence we accept</span><ul><li>Outcome retrospective on a recent engagement</li><li>Pre-engagement KPI brief co-signed by the client lead</li></ul></div></article></div>
 
   <h2>Three readiness tiers</h2>
-  <p class="lede">Tier movement is earned through assessment, verified credentials, and shipped work. Not self-attestation.</p>
-  <div class="tier-grid"><article class="tier-card"><div class="tier-num">Tier I</div><h3>AI Capable</h3><p>Uses AI tools daily, can explain workflow, follows client AI policy, validates output. The floor for all active talent by the end of the 300-day rollout.</p></article><article class="tier-card"><div class="tier-num">Tier II</div><h3>AI Fluent</h3><p>Demonstrated capability across all seven areas, holds at least one verified vendor credential, and has shipped a documented AI-enabled deliverable. The standard for senior engagements.</p></article><article class="tier-card"><div class="tier-num">Tier III</div><h3>AI Specialist</h3><p>Domain expert in an AI capability area: agentic systems, evaluation, model deployment, fine-tuning, AI product strategy, AI governance, or AI-native enterprise transformation.</p></article></div>
+  <p class="lede">Tiers map to roles. Movement between them is earned through assessment, verified credentials, and shipped work. Not self-attestation.</p>
+  <div class="tier-grid"><article class="tier-card"><div class="tier-num">Tier I</div><h3>AI Capable</h3><p class="tier-who">Every Toptal core team member. Every active talent in the network.</p><p>Uses AI tools daily, can explain workflow, follows client AI policy, validates output. The baseline every Toptal professional should hold by the time clients start expecting it. Typically eight to twelve hours of free coursework plus a short assessment.</p></article><article class="tier-card"><div class="tier-num">Tier II</div><h3>AI Fluent</h3><p class="tier-who">Required for client-facing technical roles: TS Delivery, Matchers, and senior engagement talent on AI-relevant work.</p><p>Demonstrated capability across the relevant areas for the role, at least one verified vendor credential, and a documented AI-enabled deliverable. The standard for senior engagements where the client expects AI-augmented output.</p></article><article class="tier-card"><div class="tier-num">Tier III</div><h3>AI Specialist</h3><p class="tier-who">Opt-in premium positioning track for talent who specialize in an AI capability area.</p><p>Domain expert in agentic systems, evaluation, model deployment, fine-tuning, AI product strategy, AI governance, or AI-native enterprise transformation. The bench for premium specialty engagements.</p></article></div>
 </section>
 
 <section id="curriculum" class="tab-panel">
@@ -1138,6 +1333,47 @@ tbody tr:nth-child(even) td { background: var(--bg-soft); }
 
   <div class="curriculum-foot">
     <p>Microsoft AI-900 retires June 30, 2026 and is replaced by AI-901. The catalog will be updated as soon as the new path goes live.</p>
+  </div>
+
+  <h2 id="equivalents">Already done the work? Tell us what you have.</h2>
+  <p class="lede">If you already paid for and completed a relevant credential from another provider, it counts. We are not strict about which provider. We just want to confirm you have covered the ground. Same model as transferring college credit: submit what you have, we map it against the capability standard.</p>
+
+  <div class="equivalents-card">
+    <div class="equivalents-form">
+      <div class="form-row">
+        <label for="eq-name">Credential or course name</label>
+        <input id="eq-name" type="text" placeholder="e.g., IBM Generative AI Engineering Professional Certificate">
+      </div>
+      <div class="form-row">
+        <label for="eq-provider">Provider</label>
+        <input id="eq-provider" type="text" placeholder="e.g., IBM, Coursera, Udacity, DataCamp, Stanford, MIT, internal company training">
+      </div>
+      <div class="form-row">
+        <label for="eq-link">Verification link or certificate URL (optional)</label>
+        <input id="eq-link" type="url" placeholder="https://...">
+      </div>
+      <div class="form-row">
+        <label for="eq-desc">What did it cover?</label>
+        <textarea id="eq-desc" rows="4" placeholder="Brief description of the topics and depth. Two or three sentences is fine."></textarea>
+      </div>
+      <div class="form-row">
+        <label for="eq-name-self">Your name (optional)</label>
+        <input id="eq-name-self" type="text" placeholder="So Talent Operations can match the submission to your profile">
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-primary" id="eq-submit">Generate submission</button>
+        <button type="button" class="btn btn-ghost" id="eq-clear">Clear</button>
+      </div>
+      <div class="equivalents-output" id="eq-output" hidden>
+        <p class="eq-output-label">Submission ready. Use one of the buttons below.</p>
+        <pre id="eq-text"></pre>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" id="eq-copy">Copy to clipboard</button>
+          <a href="#" class="btn btn-ghost" id="eq-mail">Open in email (talent-ops@toptal.com)</a>
+        </div>
+        <p class="eq-note">Email address shown is a placeholder until Talent Operations assigns the production inbox.</p>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -1181,9 +1417,9 @@ tbody tr:nth-child(even) td { background: var(--bg-soft); }
 <article class="phase-card">
   <div class="phase-head">
     <span class="phase-tag">300 days</span>
-    <h3>Operationalize and differentiate</h3>
+    <h3>Operationalize and embed</h3>
   </div>
-  <p class="phase-goal">Make 2026 Ready a permanent network advantage. Verified, recurring, measured. The standard sales can defend in any room.</p>
+  <p class="phase-goal">Make 2026 Ready a permanent part of how the network works. Verified, recurring, measured. Clients see it in proposals. Talent see it as the path forward, not a hurdle.</p>
   <div class="phase-cols">
     <div><h4>Actions</h4><ul><li>Make 2026 Ready part of new-applicant vetting.</li><li>Launch advanced specialization tracks.</li><li>Implement annual recertification.</li><li>Add AI capability metadata to every active profile.</li><li>Stand up client-specific AI-ready talent pools.</li><li>Publish case studies and outcome benchmarks.</li></ul></div>
     <div><h4>Outputs</h4><ul><li>AI-readiness embedded in vetting</li><li>Verified specialization badges</li><li>Client-ready AI-fluent talent pools by industry</li><li>Enterprise AI delivery benchmarks</li><li>Annual recertification model</li><li>Network-wide AI capability dashboard</li></ul></div>
@@ -1282,6 +1518,68 @@ tbody tr:nth-child(even) td { background: var(--bg-soft); }
     <div class="qa-ans"><span class="qa-label">A strong answer</span><blockquote>On the last engagement, the AI-augmented workflow shortened delivery time by 40%, reduced reviewer load by 60%, and held quality scores at parity. The client agreed the metric before we started, and we reported against it weekly. Without that measurement frame, AI work is theater.</blockquote></div>
   </div>
 </details></div>
+</section>
+
+<section id="talent" class="tab-panel">
+  <header class="panel-head">
+    <p class="eyebrow">For talent</p>
+    <h1>What 2026 Ready means for your career</h1>
+    <p class="lede">This page is for you. The rest of the framework is the operating standard. This is the part that explains why it is worth your time and what you get out of it.</p>
+  </header>
+
+  <div class="callout">
+    <p>In 1995, sending an email was a differentiator. By 2005, it was assumed. Today you cannot function in a professional role without it. AI fluency is on the same arc. It is a differentiator now. In a year, it will be expected. Beyond that, it will be assumed.</p>
+  </div>
+
+  <h2>Why we built this</h2>
+  <p>The market is moving. Enterprise clients are starting to ask AI-readiness questions in procurement, in interviews, and in statements of work. We built this framework to help you cross that line ahead of the market, not chase it. The training is free. The path is mapped. You do not have to figure it out alone.</p>
+
+  <h2>What you get out of being 2026 Ready</h2>
+  <div class="benefit-grid">
+    <article class="benefit-card">
+      <div class="benefit-icon">01</div>
+      <h3>Better engagements</h3>
+      <p>The badge is real. Matching teams use it. AI-Ready talent gets first look at AI-tagged work, premium client pools, and engagements where the buyer specifically asked for verified AI capability.</p>
+    </article>
+    <article class="benefit-card">
+      <div class="benefit-icon">02</div>
+      <h3>Faster matching</h3>
+      <p>Clients increasingly run their own AI-readiness interview. The Question Bank in this framework is built from those exact patterns. Walking in with the answers means you spend less time qualifying and more time delivering.</p>
+    </article>
+    <article class="benefit-card">
+      <div class="benefit-icon">03</div>
+      <h3>Recognition on your profile</h3>
+      <p>Tier I, Tier II, and Tier III badges are visible. Clients see them in your profile. Internal matching teams see them. Sales mentions them in proposals. The badge does work for you while you sleep.</p>
+    </article>
+    <article class="benefit-card">
+      <div class="benefit-icon">04</div>
+      <h3>Premium specialty pools</h3>
+      <p>Tier III opens access to specialty engagements: agentic systems, AI evaluation, model deployment, AI governance, AI-native transformation. These are typically the highest-leverage and best-paid pieces of work in the network.</p>
+    </article>
+    <article class="benefit-card">
+      <div class="benefit-icon">05</div>
+      <h3>Toptal sponsors formal certs for performers</h3>
+      <p>Most of the curriculum is free. A few certifications have paid exams (Microsoft AI-900, AWS AI Practitioner, GitHub Copilot certification). When you earn a Tier II badge through the free path, Toptal sponsors one paid exam as recognition. Earn the badge first. The sponsorship is the bonus.</p>
+    </article>
+    <article class="benefit-card">
+      <div class="benefit-icon">06</div>
+      <h3>Already done the work? It counts.</h3>
+      <p>If you already paid for and completed a relevant credential from another provider, you do not start from scratch. Submit what you have, we map it to the capability standard. Same model as transferring college credit. We are not strict about which provider. We just want to confirm you have covered the ground.</p>
+    </article>
+  </div>
+
+  <h2>The path is short and free</h2>
+  <p>Tier I (AI Capable) is roughly eight to twelve hours of free coursework plus a short assessment. Most of you can finish it inside a single weekend. Tier II builds on Tier I with one verified credential and one documented AI-enabled deliverable from a real engagement. Tier III is a specialization track and earned over time.</p>
+  <p>Pick the curriculum track that matches your role on the <a href="#curriculum">Curriculum tab</a>. Pick a starter course on the same tab and begin. Submit your prior credentials for credit on the <a href="#curriculum">equivalents form</a> if you have them.</p>
+
+  <h2>What this is not</h2>
+  <p>This is not a compliance program. We are not measuring whether you have fallen behind. We are not removing anyone from the network for not having a badge by a certain date. We are investing in helping you stay relevant in a market that is going to demand it whether we issue badges or not.</p>
+  <p>Think about email in 1998. People who learned it early had the advantage. Eventually everyone had to. We are trying to put you in the early group.</p>
+
+  <h2>One last thing</h2>
+  <div class="callout">
+    <p>This is a network where the best AI-augmented professionals work. Be one of them.</p>
+  </div>
 </section>
 
 <section id="buyer" class="tab-panel">
@@ -1676,6 +1974,137 @@ if (searchInput) {
 }
 
 render();
+
+// =====================================================
+// Role picker (Standard tab): toggles capability badges
+// =====================================================
+(function initRolePicker() {
+  const select = document.getElementById('role-select');
+  const reset  = document.getElementById('role-reset');
+  const grid   = document.getElementById('cap-grid');
+  if (!select || !grid) return;
+
+  const cards = grid.querySelectorAll('.cap-card');
+
+  function applyRole(roleId) {
+    if (!roleId) {
+      grid.classList.remove('has-role');
+      cards.forEach(card => {
+        card.removeAttribute('data-applies');
+        const label = card.querySelector('.cap-app-label');
+        label.hidden = true;
+        label.removeAttribute('data-level');
+        label.textContent = '';
+      });
+      reset.hidden = true;
+      return;
+    }
+    grid.classList.add('has-role');
+    cards.forEach(card => {
+      const level = card.getAttribute('data-role-' + roleId) || 'optional';
+      card.setAttribute('data-applies', level);
+      const label = card.querySelector('.cap-app-label');
+      label.hidden = false;
+      label.dataset.level = level;
+      label.textContent = level === 'required'
+        ? 'Required for this role'
+        : level === 'recommended'
+          ? 'Recommended'
+          : 'Optional';
+    });
+    reset.hidden = false;
+  }
+
+  select.addEventListener('change', e => applyRole(e.target.value));
+  reset.addEventListener('click', () => { select.value = ''; applyRole(''); });
+})();
+
+// =====================================================
+// Equivalents submission form (Curriculum tab)
+// =====================================================
+(function initEquivalents() {
+  const submit = document.getElementById('eq-submit');
+  if (!submit) return;
+  const clear  = document.getElementById('eq-clear');
+  const out    = document.getElementById('eq-output');
+  const text   = document.getElementById('eq-text');
+  const copy   = document.getElementById('eq-copy');
+  const mail   = document.getElementById('eq-mail');
+
+  const fields = {
+    name:     document.getElementById('eq-name'),
+    provider: document.getElementById('eq-provider'),
+    link:     document.getElementById('eq-link'),
+    desc:     document.getElementById('eq-desc'),
+    self:     document.getElementById('eq-name-self'),
+  };
+
+  const PLACEHOLDER_INBOX = 'talent-ops@toptal.com';
+
+  function build() {
+    const v = {};
+    for (const k in fields) v[k] = (fields[k].value || '').trim();
+
+    if (!v.name || !v.provider || !v.desc) {
+      out.hidden = false;
+      text.textContent = 'Please fill in at least the credential name, the provider, and a brief description.';
+      copy.hidden = true;
+      mail.hidden = true;
+      return;
+    }
+
+    const lines = [
+      'Hi Talent Operations,',
+      '',
+      'I would like to submit the following credential for review against the 2026 Ready capability standard.',
+      '',
+      'Credential: ' + v.name,
+      'Provider: ' + v.provider,
+      v.link ? 'Verification link: ' + v.link : null,
+      '',
+      'What it covered:',
+      v.desc,
+      '',
+      v.self ? ('Submitted by: ' + v.self) : null,
+      '',
+      'Thanks.',
+    ].filter(l => l !== null);
+
+    const body = lines.join('\n');
+    text.textContent = body;
+    copy.hidden = false;
+    mail.hidden = false;
+
+    const subject = encodeURIComponent('2026 Ready: equivalent credential submission');
+    const mailtoBody = encodeURIComponent(body);
+    mail.href = 'mailto:' + PLACEHOLDER_INBOX + '?subject=' + subject + '&body=' + mailtoBody;
+
+    out.hidden = false;
+  }
+
+  submit.addEventListener('click', build);
+
+  clear.addEventListener('click', () => {
+    for (const k in fields) fields[k].value = '';
+    out.hidden = true;
+  });
+
+  copy.addEventListener('click', async () => {
+    const body = text.textContent;
+    try {
+      await navigator.clipboard.writeText(body);
+      copy.textContent = 'Copied';
+      setTimeout(() => { copy.textContent = 'Copy to clipboard'; }, 1800);
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = body;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); copy.textContent = 'Copied'; setTimeout(() => copy.textContent = 'Copy to clipboard', 1800); } catch (_) {}
+      document.body.removeChild(ta);
+    }
+  });
+})();
 
 // =====================================================
 // Client Guidelines: per-section inline edit + actions
